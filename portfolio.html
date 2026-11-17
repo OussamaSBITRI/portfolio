@@ -96,7 +96,7 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 @media(max-width:760px){
   .hero .wrap{grid-template-columns:1fr}
   .avatar{width:150px;height:150px;font-size:2.8rem;order:-1}
-  .section-progress{top:50%;right:0;left:auto;width:min(156px,calc(100vw - 32px));height:min(260px,calc(100vh - 40px));transform:translate(100%,-50%);border:1px solid var(--line);border-right:0;border-radius:16px 0 0 16px;background:var(--surface);box-shadow:var(--shadow);transition:transform .28s ease}
+  .section-progress{top:50%;right:0;left:auto;width:min(156px,calc(100vw - 32px));height:min(260px,calc(100vh - 40px));transform:translate(100%,-50%);border:1px solid var(--line);border-right:0;border-radius:16px 0 0 16px;background:var(--surface);box-shadow:var(--shadow)}
   .section-progress.is-open{transform:translate(0,-50%)}
   .section-progress-toggle{top:50%;bottom:auto;left:-28px;display:grid;width:56px;height:56px;transform:translateY(-50%);place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--surface);box-shadow:var(--shadow)}
   .section-progress-toggle-icon{display:block;width:10px;height:10px;transform:translateX(-14px);border-radius:50%;background:var(--accent-2)}
@@ -189,50 +189,37 @@ fr: {
   contact_title:"Me contacter", phone_france:"France", phone_morocco:"Maroc",
   eyebrow:"Ingénieur Mécanique · Master Mécanique des Matériaux",
   cta_cv:"Télécharger mon CV", cta_cv_france:"CV France", cta_cv_maroc:"CV Maroc",
-  about:"Ingénieur mécanique spécialisé en simulation par éléments finis (ANSYS, Nastran, Abaqus), avec une expérience combinée en automobile, énergie/nucléaire et équipements sous pression. Diplômé de l'ENSAM (Génie mécanique) et en Master Mécanique des Matériaux à l'École Centrale de Lille.",
+  about:"Ingénieur mécanique spécialisé en simulation par éléments finis (ANSYS, Nastran, Abaqus), avec une expérience combinée en automobile, énergie/nucléaire et équipements sous pression. Diplômé de l'ENSAM (Génie mécanique) et titulaire d'un Master en Mécanique des Matériaux à l'École Centrale de Lille.",
   exp:[
-    {role:"PARALLOY Group — Stage de fin d'études, Ingénieur Métallurgie", date:"oct. 2025 – avr. 2026", sub:"Développement d’alliages réfractaires piloté par les données : structuration, simulation et optimisation", tags:["Machine Learning","Algorithmes génétiques","Alliages nucléaires","Python"], images:[
-      {src:"Figures/PARALLOY/precision_graph.png", alt:"Comparaison du temps à rupture prédit et mesuré", caption:"Temps à rupture : prédit vs mesuré"},
-      {src:"Figures/PARALLOY/convergence.gif", alt:"Courbe de convergence de l’optimisation des alliages", caption:"Convergence de l’optimisation"},
-      {src:"Figures/PARALLOY/pareto_front_alloy1.png", alt:"Front de Pareto comparant le coût normalisé et le temps à rupture de l’alliage 1", caption:"Front de Pareto de l’alliage 1"}],
-      what:"Optimiser les alliages NiCrFe pour des applications nucléaires, en réduisant le coût brut des matières premières à une durée de vie en fluage équivalente.",
-      how:"Organiser la base de données interne des essais et des chimies, combiner le Machine Learning et les algorithmes génétiques pour explorer les espaces des alliages de Paralloy et créer un outil intuitive pour analyser plus efficacement.",
-      results:"Réduction de 30 % du coût matière par rapport à l’alliage commercial pour la même durée de vie en fluage."},
-    {role:"Bertrandt — Stage de fin d'études, Ingénieur Calcul Mécanique", date:"fév. 2024 – août 2024", sub:"Choix de matériau pour minimiser le poids du châssis en améliorant les performances vibratoires", tags:["CATIA V5","ANSA","HyperMesh","OptiStruct","Composites"], images:[
-      {src:"Figures/BERTRANDT/graph_frequencies.png", alt:"Graphique de réponse en fréquence du châssis", caption:"Réponse en fréquence"},
-      {src:"Figures/BERTRANDT/Diagramme_ashby.png", alt:"Diagramme d'Ashby comparant les propriétés des matériaux", caption:"Diagramme d'Ashby"}],
-      what:"Choisir des matériaux pour réduire le poids du châssis tout en améliorant ses performances vibratoires.",
-      how:"Proposition des matériaux candidats à l'aide du logiciel GRANTA Edupack, Automatisation du flux pre et post-traitement pour réduire le temps de configuration des calculs et comparaisant entre les matériaux candidats.",
-      results:"Raideur dynamique améliorée de 108 % et masse structurelle réduite de 20,03 % par rapport au matériau de référence en choisissant les fibres au carbone/resin epoxy."},
-    {role:"OCP Group — Stage, Ingénieur Mécanique", date:"juin 2023 – août 2023", sub:"Analyse de rupture d'un piquage d'une soupape à économiseur.", tags:["SolidWorks","ANSYS","Thermomécanique","Analyse de rupture"], images:[
-      {src:"Figures/OCP MS/dessinnouveauconcept.png", alt:"Nouvelle conception de la soupape à économiseur", caption:"Nouvelle conception"},
-      {src:"Figures/OCP MS/Total%20Deformation.png", alt:"Résultat de déformation totale du piquage", caption:"Déformation totale"}],
-      what:"Analyser la rupture du piquage d’une soupape à économiseur et définir une solution d’amélioration.",
-      how:"Réaliser une analyse des causes racines, coordonner les équipes de maintenance et concevoir puis valider une solution avec SolidWorks et une modélisation thermomécanique couplée sous ANSYS.",
-      results:"Nouvelle solution validée et portefeuille de solutions évaluées sur les plans technique et économique présenté à la direction technique."}
+    {role:"PARALLOY Group — Stage de fin d'études, Ingénieur Métallurgie", date:"oct. 2025 – avr. 2026", sub:"Développement d’alliages réfractaires piloté par les données : structuration, simulation et optimisation", tags:["Machine Learning","Algorithmes génétiques","Alliages nucléaires","Python"], items:[
+      "Optimisation intelligente d’alliages via Machine Learning et algorithmes génétiques pour des alliages nucléaires.",
+      "Réduction du coût de la matière première des nouvelles chimies de 30 % (vs. alliage commercial) pour la même durée de vie en fluage.",
+      "Animation des réunions hebdomadaires avec les équipes métallurgie et laboratoire pour la résolution des points bloquants.",
+      "Organisation de sessions 5S hebdomadaires pour optimiser le flux de travail de l’équipe R&D.",
+      "Suivi des opérations de coulée des alliages optimisés et validation métallurgique des échantillons."]},
+    {role:"Bertrandt — Stage de fin d'études, Ingénieur Calcul Mécanique", date:"fév. 2024 – août 2024", sub:"Choix de matériau pour minimiser le poids du châssis en améliorant les performances vibratoires", tags:["CATIA V5","ANSA","HyperMesh","GRANTA EduPack","Composites"], items:[
+      "Pilotage technique du projet de bout en bout : objectifs, coordination CAO / simulation / post-traitement, présentation aux ingénieurs référents.",
+      "Modélisation du châssis sous ANSA, définition des conditions limites, connexions et types de calcul.",
+      "Amélioration de la raideur dynamique de 108 % (vs. matériau de référence) et allègement structural de 20,03 % via sélection de matériaux composites.",
+      "Animation de réunions quotidiennes avec les équipes de conception pour le suivi des jalons."]},
+    {role:"OCP Group — Stage, Ingénieur Mécanique", date:"juin 2023 – août 2023", sub:"Analyse de rupture d'un piquage d'une soupape à économiseur.", tags:["SolidWorks","ANSYS","Thermo-mécanique","Analyse de rupture"], items:[
+      "Pilotage de la démarche d’amélioration : analyse des causes racines, arbitrage technique, coordination avec les équipes de maintenance.",
+      "Conception et validation de la nouvelle solution (SolidWorks + modélisation thermomécanique couplée ANSYS).",
+      "Rédaction d'un portefeuille de solutions avec évaluation technico-économique, présenté et défendu devant la direction technique."]}
   ],
   proj:[
-    {role:"Conception d'un robot d'inspection autonome des TGV", date:"sept. 2023 – janv. 2024", tags:["Gestion de projet","ANSYS","Conception mécanique"], images:[
-      {src:"Figures/TGV/Vue%20Explosif.png", alt:"Vue éclatée du robot d'inspection des TGV", caption:"Vue éclatée"},
-      {src:"Figures/TGV/vue%203D.png", alt:"Rendu 3D du robot d'inspection des TGV", caption:"Rendu 3D du robot"},
-      {src:"Figures/TGV/cue%203D%202.png", alt:"Robot inspectant le dessous d'un train", caption:"Inspection sous un train"}],
-      what:"Concevoir un robot autonome pour inspecter les trains à grande vitesse.",
-      how:"Diriger une équipe de cinq ingénieurs, planifier et répartir les tâches, sélectionner les matériaux, valider le comportement statique et dynamique sous ANSYS, puis concevoir le châssis, les liaisons et la transmission.",
-      results:"Projet présenté au jury avec une conception mécanique et des validations statique et dynamique réalisées."},
-    {role:"Étude d’influence du recuit sur une soudure en acier inoxydable 304 L", date:"fév. 2023 – mai 2023", tags:["Métallurgie","Acier inoxydable 304 L","Essais mécaniques"], images:[
-      {src:"Figures/304L/courbes.jpg", alt:"Courbes contrainte-déformation des échantillons soudés", caption:"Courbes d’essai de traction"},
-      {src:"Figures/304L/microstructure%20-%20Before%20vs%20after.png", alt:"Microstructures de la soudure avant et après traitement thermique", caption:"Microstructures avant et après recuit"},
-      {src:"Figures/304L/Hardness%20-%20Before%20vs%20after.png", alt:"Dureté selon la position avant et après traitement thermique", caption:"Dureté avant et après recuit"}],
-      what:"Étudier l’influence du recuit sur une soudure en acier inoxydable 304 L.",
-      how:"Comparer les essais de traction et de dureté avant et après recuit, préparer et polir les échantillons, puis analyser les phases par microscopie optique et électronique (MO et MEB).",
-      results:"Évaluation comparative des propriétés mécaniques et des phases présentes dans la structure cristallographique avant et après recuit."},
-    {role:"Conception d'une mini voiture à faible consommation", date:"sept. 2022 – janv. 2023", tags:["ANSYS","ANSYS Fluent","SolidWorks","Aérodynamique"], images:[
-      {src:"Figures/MINI-CAR/modelefinalpressure.png", alt:"Répartition de la pression statique sur le modèle final", caption:"Pression statique"},
-      {src:"Figures/MINI-CAR/STRUCTURAL%20LOADING.png", alt:"Résultat de déformation totale du châssis", caption:"Déformation totale"},
-      {src:"Figures/MINI-CAR/Screenshot%202026-11-16%20214211.png", alt:"Rendu 3D du modèle de la mini voiture", caption:"Modèle 3D"}],
-      what:"Concevoir une mini-voiture à faible consommation.",
-      how:"Coordonner les analyses numériques, valider la structure sous ANSYS, optimiser l’aérodynamique sous ANSYS Fluent et dimensionner la transmission sous SolidWorks.",
-      results:"Comportement structurel et performances aérodynamiques évalués pour guider la conception de la mini-voiture."}
+    {role:"Conception d'un robot d'inspection autonome des TGV", date:"sept. 2023 – janv. 2024", tags:["Gestion de projet","ANSYS","Conception mécanique"], items:[
+      "Chef de projet au sein d'une équipe de 5 ingénieurs : planification, répartition des tâches, coordination des jalons et présentation finale au jury.",
+      "Pilotage des choix techniques : sélection des matériaux, validation statique et dynamique (ANSYS), arbitrage des solutions de conception.",
+      "Conception mécanique des organes d'inspection (châssis, liaisons, transmission)."]},
+    {role:"Étude d’influence du recuit sur une soudure en acier inoxydable 304 L", date:"fév. 2023 – mai 2023", tags:["Métallurgie","Acier inoxydable 304 L","Essais mécaniques"], items:[
+      "Essais de traction et de dureté avant et après le recuit.",
+      "Préparation des échantillons (polissage, solutions d’attaque chimique).",
+      "Analyse des phases présentes dans la structure cristallographique (MO et MEB)."]},
+    {role:"Conception d'une mini voiture à faible consommation", date:"sept. 2022 – janv. 2023", tags:["ANSYS","ANSYS Fluent","SolidWorks","Aérodynamique"], items:[
+      "Responsable simulation au sein de l'équipe projet : coordination des analyses numériques et synthèse des résultats.",
+      "Validation structurelle (ANSYS) et optimisation aérodynamique (ANSYS Fluent).",
+      "Dimensionnement du système de transmission (SolidWorks)."]}
   ],
   image_preview:"Aperçu de l’image", close_preview:"Fermer l’aperçu",
   switch:"EN"
@@ -243,50 +230,37 @@ en: {
   contact_title:"Contact Me", phone_france:"France", phone_morocco:"Morocco",
   eyebrow:"Mechanical Engineer · MSc Materials Mechanics",
   cta_cv:"Download my CV", cta_cv_france:"France CV", cta_cv_maroc:"Morocco CV",
-  about:"Mechanical engineer specialised in finite element simulation (ANSYS, Nastran, Abaqus), with combined experience in automotive, energy/nuclear and pressure equipment. Graduate of ENSAM (Mechanical Engineering) and currently completing an MSc in Materials Mechanics at École Centrale de Lille.",
+  about:"Mechanical engineer specialised in finite element simulation (ANSYS, Nastran, Abaqus), with combined experience in automotive, energy/nuclear and pressure equipment. Graduate of ENSAM (Mechanical Engineering) and completed a Master’s in Materials Mechanics at École Centrale de Lille.",
   exp:[
-    {role:"PARALLOY Group — Final-year Internship, Metallurgy Engineer", date:"Oct 2025 – Apr 2026", sub:"Data-Driven Development of Refractory Alloys: Structuring, Simulation, and Optimisation", tags:["Machine Learning","Genetic algorithms","Nuclear alloys","Python"], images:[
-      {src:"Figures/PARALLOY/precision_graph.png", alt:"Predicted versus true time to rupture", caption:"Rupture-time prediction"},
-      {src:"Figures/PARALLOY/convergence.gif", alt:"Convergence plot for the alloy optimisation", caption:"Convergence of the optimisation"},
-      {src:"Figures/PARALLOY/pareto_front_alloy1.png", alt:"Pareto front comparing normalised cost and time to rupture for Alloy 1", caption:"Alloy 1 Pareto front"}],
-      what:"Optimise NiCrFe alloys for nuclear applications, reducing raw-material costs while maintaining equivalent creep life.",
-      how:"Organise the internal database of test results and alloy chemistries; combine Machine Learning and genetic algorithms to explore Paralloy's alloy design space; and create an intuitive tool for more efficient analysis.",
-      results:"Reduced raw-material cost by 30% compared with the commercial alloy for the same creep lifetime."},
-    {role:"Bertrandt — Final-year Internship, Mechanical Simulation Engineer", date:"Feb 2025 – Aug 2025", sub:"Material Selection to Minimise Chassis Weight While Improving Vibration Performance", tags:["CATIA V5","ANSA","HyperMesh","OptiStruct","Composites"], images:[
-      {src:"Figures/BERTRANDT/Diagramme_ashby.png", alt:"Ashby diagram comparing material properties", caption:"Ashby diagram"},
-      {src:"Figures/BERTRANDT/graph_frequencies.png", alt:"Frequency response graph for the chassis", caption:"Frequency response"}],
-      what:"Select materials to reduce chassis weight while improving vibration performance.",
-      how:"Propose candidate materials using GRANTA EduPack; automate the pre- and post-processing workflow to reduce simulation setup time; and compare the candidate materials.",
-      results:"Improved dynamic stiffness by 108% and reduced structural weight by 20.03% compared with the reference material by selecting carbon-fibre/epoxy-resin composites."},
-    {role:"OCP Group — Internship, Mechanical Engineer", date:"Jun 2023 – Aug 2023", sub:"Failure analysis of an economiser valve nozzle.", tags:["SolidWorks","ANSYS","Thermo-mechanics","Failure analysis"], images:[
-      {src:"Figures/OCP MS/dessinnouveauconcept.png", alt:"New economiser valve nozzle design", caption:"New design"},
-      {src:"Figures/OCP MS/Total%20Deformation.png", alt:"Total deformation result for the economiser valve nozzle", caption:"Total deformation"}],
-      what:"Analyse the failure of an economiser valve nozzle and define an improved solution.",
-      how:"Perform root-cause analysis, coordinate with maintenance teams, and design and validate a solution with SolidWorks and coupled thermo-mechanical ANSYS modelling.",
-      results:"Validated a new solution and presented a portfolio of options with technical and economic assessments to technical management."}
+    {role:"PARALLOY Group — Final-year Internship, Metallurgy Engineer", date:"Oct 2025 – Apr 2026", sub:"Data-Driven Development of Refractory Alloys: Structuring, Simulation, and Optimisation", tags:["Machine Learning","Genetic algorithms","Nuclear alloys","Python"], items:[
+      "Optimise NiCrFe alloys for nuclear applications, reducing raw-material costs while maintaining equivalent creep life.",
+      "Reduced raw-material cost of new chemistries by 30% (vs. commercial alloy) for the same creep lifetime.",
+      "Led weekly meetings with the metallurgy and laboratory teams to resolve blocking points.",
+      "Organised weekly 5S sessions to streamline the R&D team's workflow.",
+      "Followed casting operations of the optimised alloys and carried out metallurgical validation of samples."]},
+    {role:"Bertrandt — Final-year Internship, Mechanical Simulation Engineer", date:"Feb 2025 – Aug 2025", sub:"Material Selection to Minimise Chassis Weight While Improving Vibration Performance", tags:["CATIA V5","ANSA","HyperMesh","GRANTA EduPack","Composites"], items:[
+      "Technically led the project end to end: objectives, CAD / simulation / post-processing coordination, presentations to reference engineers.",
+      "Modelled the chassis in ANSA and defined the boundary conditions, connections and analysis types.",
+      "Improved dynamic stiffness by 108% (vs. reference material) and reduced structural weight by 20.03% through composite material selection.",
+      "Ran daily meetings with design teams to track milestones and resolve issues."]},
+    {role:"OCP Group — Internship, Mechanical Engineer", date:"Jun 2023 – Aug 2023", sub:"Failure analysis of an economiser valve nozzle.", tags:["SolidWorks","ANSYS","Thermo-mechanics","Failure analysis"], items:[
+      "Led the improvement process: root-cause analysis, technical trade-offs, coordination with maintenance teams.",
+      "Designed and validated the new solution (SolidWorks + coupled thermo-mechanical ANSYS modelling).",
+      "Wrote a portfolio of solutions with techno-economic assessment, presented and defended to technical management."]}
   ],
   proj:[
-    {role:"Design of an autonomous TGV inspection robot", date:"Sep 2023 – Jan 2024", tags:["Project management","ANSYS","Mechanical design"], images:[
-      {src:"Figures/TGV/Vue%20Explosif.png", alt:"Exploded view of the TGV inspection robot", caption:"Exploded view"},
-      {src:"Figures/TGV/vue%203D.png", alt:"3D render of the TGV inspection robot", caption:"3D robot render"},
-      {src:"Figures/TGV/cue%203D%202.png", alt:"Robot inspecting the underside of a train", caption:"Inspection under a train"}],
-      what:"Design an autonomous robot to inspect high-speed trains.",
-      how:"Lead a five-engineer team, plan and allocate tasks, select materials, validate static and dynamic behaviour in ANSYS, and design the chassis, joints and transmission.",
-      results:"Presented the project to the jury with the mechanical design and static and dynamic validation completed."},
-    {role:"Study of the Effect of Annealing on a 304L Stainless Steel Weld", date:"Feb 2023 – May 2023", tags:["Metallurgy","304L stainless steel","Mechanical testing"], images:[
-      {src:"Figures/304L/courbes.jpg", alt:"Stress-strain curves for the welded samples", caption:"Tensile test curves"},
-      {src:"Figures/304L/microstructure%20-%20Before%20vs%20after.png", alt:"Weld microstructures before and after heat treatment", caption:"Microstructures before and after annealing"},
-      {src:"Figures/304L/Hardness%20-%20Before%20vs%20after.png", alt:"Hardness by position before and after heat treatment", caption:"Hardness before and after annealing"}],
-      what:"Study the effect of annealing on a 304L stainless steel weld.",
-      how:"Compare tensile and hardness tests before and after annealing, prepare and polish samples, and analyse phases using optical and scanning electron microscopy (OM and SEM).",
-      results:"Compared mechanical properties and phases in the crystalline structure before and after annealing."},
-    {role:"Design of a low-consumption mini car", date:"Sep 2022 – Jan 2023", tags:["ANSYS","ANSYS Fluent","SolidWorks","Aerodynamics"], images:[
-      {src:"Figures/MINI-CAR/modelefinalpressure.png", alt:"Static pressure distribution on the final model", caption:"Static pressure"},
-      {src:"Figures/MINI-CAR/STRUCTURAL%20LOADING.png", alt:"Total deformation result for the chassis", caption:"Total deformation"},
-      {src:"Figures/MINI-CAR/Screenshot%202026-11-16%20214211.png", alt:"3D render of the mini car model", caption:"3D model"}],
-      what:"Design a low-consumption mini car.",
-      how:"Coordinate numerical analyses, validate the structure in ANSYS, optimise aerodynamics in ANSYS Fluent, and size the transmission system in SolidWorks.",
-      results:"Evaluated structural behaviour and aerodynamic performance to guide the low-consumption design."}
+    {role:"Design of an autonomous TGV inspection robot", date:"Sep 2023 – Jan 2024", tags:["Project management","ANSYS","Mechanical design"], items:[
+      "Project lead of a 5-engineer team: planning, task allocation, milestone coordination and final presentation to the jury.",
+      "Led technical choices: material selection, static and dynamic validation (ANSYS), design trade-offs.",
+      "Mechanical design of the inspection components (chassis, joints, transmission)."]},
+    {role:"Study of the Effect of Annealing on a 304L Stainless Steel Weld", date:"Feb 2023 – May 2023", tags:["Metallurgy","304L stainless steel","Mechanical testing"], items:[
+      "Tensile and hardness tests before and after annealing.",
+      "Sample preparation (polishing and chemical etching solutions).",
+      "Analysis of phases in the crystal structure using optical microscopy (OM) and scanning electron microscopy (SEM)."]},
+    {role:"Design of a low-consumption mini car", date:"Sep 2022 – Jan 2023", tags:["ANSYS","ANSYS Fluent","SolidWorks","Aerodynamics"], items:[
+      "Simulation lead within the project team: coordination of numerical analyses and synthesis of results.",
+      "Structural validation (ANSYS) and aerodynamic optimisation (ANSYS Fluent).",
+      "Sizing of the transmission system (SolidWorks)."]}
   ],
   image_preview:"Image preview", close_preview:"Close image preview",
   switch:"FR"
@@ -297,7 +271,8 @@ const root = document.documentElement;
 
 function card(x){
   const tags = (x.tags||[]).map(t=>`<span class="chip">${t}</span>`).join("");
-  const images = (x.images||[]).map(image=>`<figure><button class="gallery-image-button" type="button" aria-haspopup="dialog" aria-label="${image.alt}"><img src="${image.src}" alt="${image.alt}" loading="lazy"></button><figcaption>${image.caption}</figcaption></figure>`).join("");
+  const images = (x.images||[]).map(image=>`<figure><button class="gallery-image-button" type="button" aria-haspopup="dialog" aria-label="${image.alt}"><img src="${image.src}" alt="${image.alt}"></button><figcaption>${image.caption}</figcaption></figure>`).join("");
+  const items = x.items ? `<ul>${x.items.map(i=>`<li>${i}</li>`).join("")}</ul>` : "";
   const t = I18N[lang];
   const columns = [
     [t.what_title, x.what],
@@ -305,7 +280,7 @@ function card(x){
     [t.results_title, x.results]
   ].map(([title, content])=>`<div class="portfolio-column"><h4>${title}</h4><p>${content}</p></div>`).join("");
   return `<article class="card"><header><h3>${x.role}</h3><span class="date">${x.date}</span></header>
-    ${x.sub?`<p class="sub">${x.sub}</p>`:""}${images?`<div class="experience-gallery">${images}</div>`:""}<div class="portfolio-columns">${columns}</div>${tags?`<div class="chips">${tags}</div>`:""}</article>`;
+    ${x.sub?`<p class="sub">${x.sub}</p>`:""}${images?`<div class="experience-gallery">${images}</div>`:""}<div class="portfolio-columns">${columns}</div>${tags?`<div class="chips">${tags}</div>":""}</article>`;
 }
 
 function render(lang){
