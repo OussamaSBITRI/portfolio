@@ -27,7 +27,9 @@ a:hover{text-decoration:underline}
 .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
 header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.brand{font-weight:700;color:var(--text)}
+.brand{display:inline-flex;align-items:center;padding:6px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-weight:700;color:var(--text);transition:border-color .2s ease,box-shadow .2s ease}
+.brand:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:0 0 10px color-mix(in srgb,var(--accent-2) 18%,transparent);text-decoration:none}
+.brand:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
 .nav nav{display:flex;gap:18px;font-size:.92rem;flex-wrap:wrap}
 .nav nav a{color:var(--muted)}
 .nav nav a:hover{color:var(--accent);text-decoration:none}
@@ -97,7 +99,7 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 <body>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html">Portfolio</a>
+    <a class="brand" href="cv.html">Portfolio</a>
     <nav>
       <a href="index.html" data-i18n="nav_home"></a>
       <a href="#top" data-i18n="nav_about"></a>
@@ -105,7 +107,6 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
       <a href="#projects" data-i18n="nav_proj"></a>
     </nav>
     <div class="tools">
-      <a class="btn" href="cv.html" data-i18n="nav_cv"></a>
       <button class="btn" id="lang" aria-label="Language">EN</button>
       <button class="btn" id="theme" aria-label="Theme">◐</button>
     </div>
@@ -164,7 +165,7 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 <script>
 const I18N = {
 fr: {
-  nav_home:"Accueil", nav_about:"Profil", nav_exp:"Expérience", nav_proj:"Projets", nav_contact:"Contact", nav_cv:"CV",
+  nav_home:"Accueil", nav_about:"Profil", nav_exp:"Expérience", nav_proj:"Projets", nav_contact:"Contact",
   what_title:"Quoi ?", how_title:"Comment ?", results_title:"Résultats",
   contact_title:"Me contacter", phone_france:"France", phone_morocco:"Maroc",
   eyebrow:"Ingénieur Mécanique · Master Mécanique des Matériaux",
@@ -218,7 +219,7 @@ fr: {
   switch:"EN"
 },
 en: {
-  nav_home:"Home", nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_contact:"Contact", nav_cv:"CV",
+  nav_home:"Home", nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_contact:"Contact",
   what_title:"What?", how_title:"How?", results_title:"Results",
   contact_title:"Contact Me", phone_france:"France", phone_morocco:"Morocco",
   eyebrow:"Mechanical Engineer · MSc Materials Mechanics",
