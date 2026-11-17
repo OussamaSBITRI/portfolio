@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Oussama SBITRI — Curriculum Vitae</title>
+<meta name="description" content="Curriculum Vitae d'Oussama SBITRI, ingénieur mécanique spécialisé en simulation par éléments finis (ANSYS, Nastran, Abaqus).">
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --text:#1c2430; --muted:#5b6675;
+  --accent:#1f4e79; --accent-2:#2e86c1; --line:#e1e5eb; --chip:#eaf1f8;
+  --shadow:0 1px 2px rgba(20,30,50,.06),0 8px 24px rgba(20,30,50,.06);
+}
+:root[data-theme="dark"]{
+  --bg:#0f141b; --surface:#161d27; --text:#e7ebf0; --muted:#9aa6b5;
+  --accent:#6fb1e6; --accent-2:#8fc7f2; --line:#263040; --chip:#1d2a3a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{font-weight:700;color:var(--text)}
+.nav nav{display:flex;gap:18px;font-size:.92rem;flex-wrap:wrap}
+.nav nav a{color:var(--muted)}
+.nav nav a:hover{color:var(--accent);text-decoration:none}
+.tools{display:flex;gap:8px}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:8px;padding:6px 10px;font-size:.85rem;cursor:pointer;transition:all .2s ease}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+:root[data-theme="dark"] .btn.primary{color:#0f141b}
+.hero{padding:72px 0 48px}
+.hero .wrap{display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center}
+.eyebrow{color:var(--accent-2);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin:.3em 0}
+.lead{font-size:1.1rem;color:var(--muted);max-width:620px}
+.hero-contact-title{display:block;font-size:.95rem;margin:18px 0 6px}
+.hero-contact-title::after{display:none}
+.hero-contact{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.92rem}
+.hero-contact a{color:var(--accent)}
+.cta{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.cta .btn{padding:10px 16px;font-size:.95rem}
+.cv-picker{position:relative}
+.cv-menu{position:absolute;top:calc(100% + 8px);left:0;z-index:20;display:grid;gap:6px;min-width:100%;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow)}
+.cv-menu[hidden]{display:none}
+.cv-menu .btn{text-align:left;white-space:nowrap}
+.avatar{width:220px;height:220px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-size:4rem;font-weight:700;box-shadow:var(--shadow)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+section{padding:56px 0}
+h2{font-size:1.6rem;margin:0 0 24px;display:flex;align-items:center;gap:12px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.timeline{display:grid;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.card header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.card h3{margin:0;font-size:1.05rem}
+.date{color:var(--muted);font-size:.88rem;white-space:nowrap}
+.sub{color:var(--muted);font-style:italic;margin:0 0 8px}
+.card ul{margin:8px 0 0;padding-left:20px}
+.card li{margin:5px 0}
+.card li b{color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.hobby-card p{color:var(--muted)}
+.audio-player{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:center;margin-top:14px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.audio-play{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--text);font-size:1.1rem;cursor:pointer}
+.audio-play:hover{border-color:var(--accent)}
+.audio-player-controls{display:grid;gap:8px;min-width:0}
+.audio-seek-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center}
+.audio-volume-row{display:grid;grid-template-columns:auto minmax(70px,140px) auto;gap:8px;align-items:center;color:var(--muted);font-size:.82rem}
+.audio-player input[type="range"]{width:100%;margin:0;accent-color:var(--accent);cursor:pointer}
+.audio-player input:disabled{cursor:not-allowed;opacity:.5}
+.audio-time{color:var(--muted);font-size:.78rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.audio-status{margin:0;color:var(--muted);font-size:.8rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{background:var(--chip);color:var(--accent);padding:3px 10px;border-radius:999px;font-size:.8rem}
+.skills-subtitle{margin:32px 0 12px;font-size:1.05rem}
+.software-controls{display:flex;justify-content:flex-end;margin-bottom:8px}
+.software-controls .btn{font-size:.8rem}
+.software-carousel{position:relative;width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;margin-bottom:24px}
+.software-carousel::before,.software-carousel::after{content:"";position:absolute;z-index:1;top:0;bottom:0;width:clamp(28px,6vw,96px);pointer-events:none}
+.software-carousel::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.software-carousel::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.software-track{display:flex;width:max-content;animation:software-loop 38s linear infinite}
+.software-track.is-paused,.software-carousel:hover .software-track,.software-carousel:focus-within .software-track{animation-play-state:paused}
+.software-group{display:flex;flex-shrink:0;gap:18px;padding-right:18px}
+.software-card{text-align:center}
+.software-card{width:220px;flex:0 0 220px}
+.software-logo-placeholder{height:82px;display:grid;place-items:center;margin-bottom:12px;border:1px dashed var(--line);border-radius:10px;background:var(--bg);color:var(--muted);font-size:.82rem}
+.software-logo-placeholder.has-logo{background:#fff;border-style:solid}
+.software-logo-placeholder>a{width:100%;height:100%;display:grid;place-items:center}
+.software-logo-placeholder img{max-width:90%;max-height:68px;object-fit:contain}
+.software-card h3{margin:0;font-size:1rem}
+.software-card ul{margin:8px 0 0;padding:0;list-style:none;color:var(--muted);font-size:.9rem}
+.software-card li{margin:3px 0}
+@keyframes software-loop{to{transform:translateX(-20%)}}
+.skill h3{margin:0 0 8px;font-size:1rem}
+.skill p{margin:0;color:var(--muted);font-size:.93rem}
+.edu{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hobbies-control{text-align:center;padding:24px 0 0}
+.hobbies-control .btn{border-radius:8px 8px 0 0}
+#hobbies[hidden]{display:none}
+footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;border-top:1px solid var(--line)}
+@media(max-width:760px){
+  .hero .wrap{grid-template-columns:1fr}
+  .avatar{width:150px;height:150px;font-size:2.8rem;order:-1}
+  .nav nav{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .software-carousel{overflow-x:auto}
+  .software-track{animation:none;transform:none}
+  .software-group[aria-hidden="true"]{display:none}
+  .software-controls{display:none}
+}
+@media print{.nav,.cta,footer{display:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Curriculum Vitae</a>
+    <nav>
+      <a href="index.html" data-i18n="nav_home"></a>
+      <a href="#top" data-i18n="nav_about"></a>
+      <a href="#experience" data-i18n="nav_exp"></a>
+      <a href="#projects" data-i18n="nav_proj"></a>
+      <a href="#skills" data-i18n="nav_skills"></a>
+      <a href="#education" data-i18n="nav_edu"></a>
+    </nav>
+    <div class="tools">
+      <a class="btn" href="portfolio.html" data-i18n="nav_portfolio"></a>
+      <button class="btn" id="lang" aria-label="Language">EN</button>
+      <button class="btn" id="theme" aria-label="Theme">◐</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Oussama SBITRI</h1>
+        <div class="eyebrow" data-i18n="eyebrow"></div>
+        <p class="lead" id="about" data-i18n="about"></p>
+        <h2 class="hero-contact-title" data-i18n="contact_title"></h2>
+        <div class="hero-contact" id="contact">
+          <a href="mailto:oussama.sbitri@outlook.com">oussama.sbitri@outlook.com</a>
+          <a href="tel:+33762266359"><span data-i18n="phone_france"></span>: +33 7 62 26 63 59</a>
+          <a href="tel:+212708875021"><span data-i18n="phone_morocco"></span>: +212 7 08 87 50 21</a>
+        </div>
+        <div class="cta">
+          <div class="cv-picker">
+            <button class="btn" type="button" id="cv-menu-toggle" aria-expanded="false" aria-controls="cv-menu" data-i18n="cta_cv"></button>
+            <div class="cv-menu" id="cv-menu" hidden>
+              <a class="btn" href="cv_sbitri_oussama_genie_mecanique_france.pdf" target="_blank" rel="noopener" data-i18n="cta_cv_france"></a>
+              <a class="btn" href="cv_sbitri_oussama_genie_mecanique_maroc.pdf" target="_blank" rel="noopener" data-i18n="cta_cv_maroc"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="avatar"><img src="photo-cv.jpg" alt="Oussama SBITRI" onerror="this.remove();this.parentNode.textContent='OS'"></div>
+    </div>
+  </div>
+
+  <section id="experience"><div class="wrap">
+    <h2 data-i18n="nav_exp"></h2>
+    <div class="timeline" id="exp"></div>
+  </div></section>
+
+  <section id="projects"><div class="wrap">
+    <h2 data-i18n="nav_proj"></h2>
+    <div class="timeline" id="proj"></div>
+  </div></section>
+
+  <section id="skills"><div class="wrap">
+    <h2 data-i18n="nav_skills"></h2>
+    <div class="grid" id="skillgrid"></div>
+    <h3 class="skills-subtitle" id="software-heading" data-i18n="skills_software_title"></h3>
+    <div class="software-controls">
+      <button class="btn" type="button" id="software-motion-toggle" aria-pressed="false"></button>
+    </div>
+    <div class="software-carousel" role="region" aria-labelledby="software-heading">
+      <div class="software-track" id="software-list"></div>
+    </div>
+  </div></section>
+
+  <section id="education"><div class="wrap">
+    <h2 data-i18n="nav_edu"></h2>
+    <div class="timeline" id="edu"></div>
+    <h2 style="margin-top:40px" data-i18n="langs_title"></h2>
+    <div class="grid" id="langs"></div>
+  </div></section>
+
+  <div class="wrap hobbies-control">
+    <button class="btn" type="button" id="hobbies-toggle" aria-expanded="false" aria-controls="hobbies" data-i18n="hobbies_button"></button>
+  </div>
+  <section id="hobbies" aria-labelledby="hobbies-title" hidden><div class="wrap">
+    <h2 id="hobbies-title" tabindex="-1" data-i18n="hobbies_title"></h2>
+    <p data-i18n="hobbies_description"></p>
+    <div class="grid">
+      <article class="card hobby-card">
+        <h3 data-i18n="hobby_fps_title"></h3>
+        <p data-i18n="hobby_fps_description"></p>
+      </article>
+      <article class="card hobby-card">
+        <h3 data-i18n="hobby_sim_title"></h3>
+        <p data-i18n="hobby_sim_description"></p>
+      </article>
+      <article class="card hobby-card">
+        <h3 data-i18n="hobby_music_title"></h3>
+        <p data-i18n="hobby_music_description"></p>
+        <div class="audio-player" id="hobby-audio-player" role="group" aria-label="Audio player">
+          <button class="audio-play" type="button" id="hobby-audio-play" aria-label="Play audio">▶</button>
+          <div class="audio-player-controls">
+            <div class="audio-seek-row">
+              <span class="audio-time" id="hobby-audio-current">0:00</span>
+              <input type="range" id="hobby-audio-seek" min="0" max="0" step="0.1" value="0" aria-label="Seek" disabled>
+              <span class="audio-time" id="hobby-audio-duration">--:--</span>
+            </div>
+            <div class="audio-volume-row">
+              <label for="hobby-audio-volume" data-i18n="hobby_audio_volume"></label>
+              <input type="range" id="hobby-audio-volume" min="0" max="1" step="0.01" value="1" aria-label="Volume">
+              <span class="audio-time" id="hobby-audio-volume-value">100%</span>
+            </div>
+            <p class="audio-status" id="hobby-audio-status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+        <audio id="hobby-audio" preload="metadata">
+          <source src="Project_5.mp3" type="audio/mpeg">
+          <span data-i18n="hobby_audio_fallback"></span>
+        </audio>
+      </article>
+    </div>
+  </div></section>
+
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Oussama SBITRI</div></footer>
+
+<script>
+const I18N = {
+fr: {
+  nav_home:"Accueil", nav_about:"Profil", nav_exp:"Expérience", nav_proj:"Projets", nav_skills:"Compétences", nav_edu:"Formation", nav_contact:"Contact", nav_portfolio:"Portfolio",
+  hobbies_button:"Cliquez ici pour en savoir un peu plus sur moi", hobbies_title:"Loisirs", hobbies_description:"Vous êtes arrivé jusqu'au bout ! Autant jeter un œil à quelques-uns de mes loisirs !",
+  hobby_fps_title:"Jeux FPS", hobby_fps_description:"Joueur compétitif de FPS, actuellement classé Diamant sur Valorant et ayant atteint le rang Émeraude sur Rainbow Six Siege. Je joue aussi à d’autres jeux comme Apex Legends, Counter-Strike et ULTRAKILL.",
+  hobby_sim_title:"Simulation automobile", hobby_sim_description:"Passionné de sport automobile, grand amateur du circuit de Spa-Francorchamps et de la voiture de Formule 1 F2004. Au fil des années, j’ai travaillé à mieux comprendre la dynamique des véhicules et à perfectionner mes gestes de pilotage pour tirer le meilleur parti du circuit.",
+  hobby_music_title:"Production musicale", hobby_music_description:"La musique est un refuge qui me permet d’exprimer mes pensées et mes idées. Envie d’en avoir un aperçu ? Voici l’un de mes morceaux préférés que j’ai créés !",
+  hobby_audio_player:"Lecteur audio", hobby_audio_play:"Lire la piste", hobby_audio_pause:"Mettre la piste en pause", hobby_audio_seek:"Position de lecture", hobby_audio_volume:"Volume", hobby_audio_error:"Impossible de lire la piste audio.",
+  hobby_audio_fallback:"Votre navigateur ne prend pas en charge la lecture audio.",
+  contact_title:"Me contacter", phone_france:"France", phone_morocco:"Maroc",
+  skills_software_title:"Logiciels",
+  software_logo_placeholder:"Logo à ajouter",
+  software_motion_pause:"Mettre le défilement en pause",
+  software_motion_resume:"Reprendre le défilement",
+  software_brands:[
+    {brand:"ANSYS",software:["Workbench","Mechanical","Fluent"]},
+    {brand:"Dassault Systèmes",software:["CATIA V5","SolidWorks","Abaqus"]},
+    {brand:"MSC Software",software:["ANSA","Nastran","Meta"]},
+    {brand:"AutoPIPE Vessel",software:["AutoPIPE Vessel"]},
+    {brand:"Microsoft Office",software:["Excel","Word","PowerPoint"]}
+  ],
+  eyebrow:"Ingénieur Mécanique · Master Mécanique des Matériaux",
+  cta_cv:"Télécharger mon CV", cta_cv_france:"CV France", cta_cv_maroc:"CV Maroc",
+  about:"Ingénieur mécanique spécialisé en simulation par éléments finis (ANSYS, Nastran, Abaqus), avec une expérience combinée en automobile, énergie/nucléaire et équipements sous pression. Diplômé de l'ENSAM (Génie mécanique) et en Master Mécanique des Matériaux à l'École Centrale de Lille.",
+  exp:[
+    {role:"PARALLOY Group — Stage de fin d'études, Ingénieur Métallurgie", date:"oct. 2025 – avr. 2026", sub:"Développement d’alliages réfractaires piloté par les données : structuration, simulation et optimisation", tags:["Machine Learning","Algorithmes génétiques","Alliages nucléaires","Python"], items:[
+      "Optimisation intelligente d'alliages via Machine Learning (précision du modèle : <b>87%</b>) et algorithmes génétiques pour des alliages nucléaires.",
+      "Réduction du coût de la matière première des nouvelles chimies de <b>30%</b> (vs. alliage commercial) pour la même durée de vie en fluage.",
+      "Animation des réunions hebdomadaires avec les équipes métallurgie et laboratoire pour la résolution des points bloquants.",
+      "Organisation de sessions 5S hebdomadaires pour optimiser le flux de travail de l'équipe R&D.",
+      "Suivi des opérations de coulée des alliages optimisés et validation métallurgique des échantillons."]},
+    {role:"Bertrandt — Stage de fin d'études, Ingénieur Calcul Mécanique", date:"fév. 2024 – août 2024", sub:"Choix de matériau pour minimiser le poids du châssis en améliorant les performances vibratoires", tags:["CATIA V5","ANSA","HyperMesh","GRANTA Edupack","Composites"], items:[
+      "Pilotage technique du projet de bout en bout : objectifs, coordination CAO / simulation / post-traitement, présentation aux ingénieurs référents.",
+      "Modélisation du chassis sous ANSA, définition des conditions limites, connexions et les types du calcul .",
+      "Amélioration de la raideur dynamique de <b>108%</b> (vs. matériau de référence) et allègement structural de <b>20,03%</b> via sélection de matériaux composites.",
+      "Animation de réunions quotidiennes avec les équipes de conception pour le suivi des jalons."]},
+    {role:"OCP Group — Stage, Ingénieur Mécanique", date:"juin 2023 – août 2023", sub:"Analyse de rupture d'un piquage d'une soupape à économiseur.", tags:["SolidWorks","ANSYS","Thermomécanique","Analyse de rupture"], items:[
+      "Pilotage de la démarche d'amélioration : analyse des causes racines, arbitrage technique, coordination avec les équipes de maintenance.",
+      "Conception et validation de la nouvelle solution (<b>SolidWorks</b> + modélisation thermomécanique couplée <b>ANSYS</b>).",
+      "Rédaction d'un portefeuille de solutions avec évaluation technico-économique, présenté et défendu devant la direction technique."]}
+  ],
+  proj:[
+    {role:"Conception d'un robot d'inspection autonome des TGV", date:"sept. 2023 – janv. 2024", tags:["Gestion de projet","ANSYS","Conception mécanique"], items:[
+      "<b>Chef de projet</b> au sein d'une équipe de 5 ingénieurs : planification, répartition des tâches, coordination des jalons et présentation finale au jury.",
+      "Pilotage des choix techniques : sélection des matériaux, validation statique et dynamique (ANSYS), arbitrage des solutions de conception.",
+      "Conception mécanique des organes d'inspection (châssis, liaisons, transmission)."]},
+    {role:"Étude d’influence du recuit sur une soudure en acier inoxydable 304 L", date:"fév. 2023 – mai 2023", tags:["Métallurgie","Acier inoxydable 304 L","Essais mécaniques"], items:[
+      "Essais de traction et de dureté avant et après le recuit.",
+      "Préparation des échantillons (polissage, solutions d’attaque chimique).",
+      "Analyse des phases présentes dans la structure cristallographique (MO et MEB)."]},
+    {role:"Conception d'une mini voiture à faible consommation", date:"sept. 2022 – janv. 2023", tags:["ANSYS","ANSYS Fluent","SolidWorks","Aérodynamique"], items:[
+      "<b>Responsable simulation</b> au sein de l'équipe projet : coordination des analyses numériques et synthèse des résultats.",
+      "Validation structurelle (ANSYS) et optimisation aérodynamique (ANSYS Fluent).",
+      "Dimensionnement du système de transmission (SolidWorks)."]}
+  ],
+  skills_title:[
+    ["Calculs mécaniques","Statique, dynamique, fatigue HCF/LCF, contact, non-linéarités, thermo-mécanique"],
+    ["Modélisation FEA","Prétraitement, maillage, conditions limites, étude de convergence, post-traitement"],
+    ["Programmation et données","Python, Pandas, Scikit-learn, Excel"],
+    ["Gestion de projets","Transformation opérationnelle, optimisation, MS Project, Excel VBA"],
+    ["Procédés de fabrication","Usinage, fonderie, formage, fabrication additive, soudage"]
+  ],
+  edu:[
+    {role:"École Centrale de Lille", date:"2024 – 2026", sub:"Master Sciences mécaniques et Ingénierie : Mécanique des Matériaux"},
+    {role:"École Nationale Supérieure d'Arts et Métiers (ENSAM)", date:"2021 – 2024", sub:"Diplôme d'ingénieur : Génie mécanique"}
+  ],
+  langs_title:"Langues",
+  langs:[["Français","Bilingue (C2)"],["Anglais","Bilingue (C2)"],["Arabe","Natif"]],
+  switch:"EN"
+},
+en: {
+  nav_home:"Home", nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_edu:"Education", nav_contact:"Contact", nav_portfolio:"Portfolio",
+  hobbies_button:"Click here for a little more about me", hobbies_title:"Hobbies", hobbies_description:"You've made it to the end! might as well look at some of my hobbies!",
+  hobby_fps_title:"FPS Gaming", hobby_fps_description:"Competitive FPS gamer, currently Diamond in Valorant and with an Emerald peak in Rainbow Six Siege. I also play other games like Apex Legends, Counter-Strike, and ULTRAKILL.",
+  hobby_sim_title:"Sim Racing", hobby_sim_description:"Motorsports enthusiast and a big fan of the Spa-Francorchamps circuit and the F2004 Formula 1 car. I've worked throughout the years to better understand vehicle dynamics and practice my driving inputs to get the most out of the track.",
+  hobby_music_title:"Music Production", hobby_music_description:"Making music has been my refuge for expressing my thoughts and ideas. Want a preview? Here's one of my favourite songs that I've made!",
+  hobby_audio_player:"Audio player", hobby_audio_play:"Play track", hobby_audio_pause:"Pause track", hobby_audio_seek:"Playback position", hobby_audio_volume:"Volume", hobby_audio_error:"Unable to play the audio track.",
+  hobby_audio_fallback:"Your browser does not support audio playback.",
+  contact_title:"Contact Me", phone_france:"France", phone_morocco:"Morocco",
+  skills_software_title:"Software",
+  software_logo_placeholder:"Logo coming soon",
+  software_motion_pause:"Pause scrolling",
+  software_motion_resume:"Resume scrolling",
+  software_brands:[
+    {brand:"ANSYS",software:["Workbench","Mechanical","Fluent"]},
+    {brand:"Dassault Systèmes",software:["CATIA V5","SolidWorks","Abaqus"]},
+    {brand:"MSC Software",software:["ANSA","Nastran","Meta"]},
+    {brand:"AutoPIPE Vessel",software:["AutoPIPE Vessel"]},
+    {brand:"Microsoft Office",software:["Excel","Word","PowerPoint"]}
+  ],
+  eyebrow:"Mechanical Engineer · MSc Materials Mechanics",
+  cta_cv:"Download my CV", cta_cv_france:"France CV", cta_cv_maroc:"Morocco CV",
+  about:"Mechanical engineer specialised in finite element simulation (ANSYS, Nastran, Abaqus), with combined experience in automotive, energy/nuclear and pressure equipment. Graduate of ENSAM (Mechanical Engineering) and currently completing an MSc in Materials Mechanics at École Centrale de Lille.",
+  exp:[
+    {role:"PARALLOY Group — Final-year Internship, Metallurgy Engineer", date:"Oct 2025 – Apr 2026", sub:"Data-Driven Development of Refractory Alloys: Structuring, Simulation, and Optimisation", tags:["Machine Learning","Genetic algorithms","Nuclear alloys","Python"], items:[
+      "Intelligent alloy optimisation using Machine Learning (model accuracy: <b>87%</b>) and genetic algorithms for nuclear alloys.",
+      "Reduced raw-material cost of new chemistries by <b>30%</b> (vs. commercial alloy) for the same creep lifetime.",
+      "Led weekly meetings with the metallurgy and laboratory teams to resolve blocking points.",
+      "Organised weekly 5S sessions to streamline the R&D team's workflow.",
+      "Followed casting operations of the optimised alloys and carried out metallurgical validation of samples."]},
+    {role:"Bertrandt — Final-year Internship, Mechanical Simulation Engineer", date:"Feb 2025 – Aug 2025", sub:"Material Selection to Minimise Chassis Weight While Improving Vibration Performance", tags:["CATIA V5","ANSA","HyperMesh","GRANTA Edupack","Composites"], items:[
+      "Technically led the project end to end: objectives, CAD / simulation / post-processing coordination, presentations to reference engineers.",
+      "Modelled the chassis in ANSA and defined the boundary conditions, connections, and analysis types.",
+      "Improved dynamic stiffness by <b>108%</b> (vs. reference material) and reduced structural weight by <b>20.03%</b> through composite material selection.",
+      "Ran daily meetings with design teams to track milestones and resolve issues."]},
+    {role:"OCP Group — Internship, Mechanical Engineer", date:"Jun 2023 – Aug 2023", sub:"Failure analysis of an economiser valve nozzle.", tags:["SolidWorks","ANSYS","Thermo-mechanics","Failure analysis"], items:[
+      "Led the improvement process: root-cause analysis, technical trade-offs, coordination with maintenance teams.",
+      "Designed and validated the new solution (<b>SolidWorks</b> + coupled thermo-mechanical <b>ANSYS</b> modelling).",
+      "Wrote a portfolio of solutions with techno-economic assessment, presented and defended to technical management."]}
+  ],
+  proj:[
+    {role:"Design of an autonomous TGV inspection robot", date:"Sep 2023 – Jan 2024", tags:["Project management","ANSYS","Mechanical design"], items:[
+      "<b>Project lead</b> of a 5-engineer team: planning, task allocation, milestone coordination and final presentation to the jury.",
+      "Led technical choices: material selection, static and dynamic validation (ANSYS), design trade-offs.",
+      "Mechanical design of the inspection components (chassis, joints, transmission)."]},
+    {role:"Study of the Effect of Annealing on a 304L Stainless Steel Weld", date:"Feb 2023 – May 2023", tags:["Metallurgy","304L stainless steel","Mechanical testing"], items:[
+      "Tensile and hardness tests before and after annealing.",
+      "Sample preparation (polishing and chemical etching solutions).",
+      "Analysis of phases in the crystal structure using optical microscopy (OM) and scanning electron microscopy (SEM)."]},
+    {role:"Design of a low-consumption mini car", date:"Sep 2022 – Jan 2023", tags:["ANSYS","ANSYS Fluent","SolidWorks","Aerodynamics"], items:[
+      "<b>Simulation lead</b> within the project team: coordination of numerical analyses and synthesis of results.",
+      "Structural validation (ANSYS) and aerodynamic optimisation (ANSYS Fluent).",
+      "Sizing of the transmission system (SolidWorks)."]}
+  ],
+  skills_title:[
+    ["Mechanical analysis","Static, dynamic, HCF/LCF fatigue, contact, non-linearities, thermo-mechanics"],
+    ["FEA modelling","Pre-processing, meshing, boundary conditions, convergence study, post-processing"],
+    ["Programming & data","Python, Pandas, Scikit-learn, Excel"],
+    ["Project management","Operational transformation, optimisation, MS Project, Excel VBA"],
+    ["Manufacturing processes","Machining, casting, forming, additive manufacturing, welding"]
+  ],
+  edu:[
+    {role:"École Centrale de Lille", date:"2024 – 2026", sub:"MSc Mechanical Sciences & Engineering: Materials Mechanics"},
+    {role:"École Nationale Supérieure d'Arts et Métiers (ENSAM)", date:"2021 – 2024", sub:"Engineering degree: Mechanical Engineering"}
+  ],
+  langs_title:"Languages",
+  langs:[["French","Bilingual (C2)"],["English","Bilingual (C2)"],["Arabic","Native"]],
+  switch:"FR"
+}};
+
+const $ = s => document.querySelector(s);
+const root = document.documentElement;
+const hobbyAudio = $("#hobby-audio");
+const hobbyAudioPlay = $("#hobby-audio-play");
+const hobbyAudioSeek = $("#hobby-audio-seek");
+const hobbyAudioVolume = $("#hobby-audio-volume");
+const hobbyAudioVolumeValue = $("#hobby-audio-volume-value");
+const hobbyAudioCurrent = $("#hobby-audio-current");
+const hobbyAudioDuration = $("#hobby-audio-duration");
+const hobbyAudioStatus = $("#hobby-audio-status");
+const SOFTWARE_LOGOS = {
+  ANSYS: {
+    src:"Logos/ANSYS.png",
+    alt:"ANSYS"
+  },
+  "Dassault Systèmes": {
+    src:"https://www.3ds.com/statics/menu/2/assets/img/logo/3ds-dark.svg",
+    alt:"Dassault Systèmes"
+  },
+  "MSC Software": {
+    src:"Logos/MSC_Software.jpg",
+    alt:"MSC Software"
+  },
+  "AutoPIPE Vessel": {
+    src:"Logos/autopipe%20vessel.png",
+    alt:"AutoPIPE Vessel"
+  },
+  "Microsoft Office": {
+    src:"https://upload.wikimedia.org/wikipedia/commons/4/4f/Microsoft_Office_2013-2019_logo_and_wordmark.svg",
+    alt:"Microsoft Office"
+  }
+};
+
+function card(x){
+  const tags = (x.tags||[]).map(t=>`<span class="chip">${t}</span>`).join("");
+  const items = x.items ? `<ul>${x.items.map(i=>`<li>${i}</li>`).join("")}</ul>` : "";
+  return `<article class="card"><header><h3>${x.role}</h3><span class="date">${x.date}</span></header>
+    ${x.sub?`<p class="sub">${x.sub}</p>`:""}${items}${tags?`<div class="chips">${tags}</div>`:""}</article>`;
+}
+
+function softwareCard({brand,software}, decorative=false){
+  const logo = SOFTWARE_LOGOS[brand];
+  return `<article class="card software-card" role="listitem">
+    <div class="software-logo-placeholder${logo ? " has-logo" : ""}"${logo ? "" : ' aria-hidden="true"'}>${logo
+      ? `<a href="${logo.src}" target="_blank" rel="noopener noreferrer"${decorative ? ' tabindex="-1"' : ""}><img src="${logo.src}" alt="${logo.alt} logo"></a>`
+      : I18N[lang].software_logo_placeholder}</div>
+    <h3>${brand}</h3>
+    <ul>${software.map(s=>`<li>${s}</li>`).join("")}</ul>
+  </article>`;
+}
+
+function softwareGroup(decorative=false){
+  return `<div class="software-group" role="list"${decorative ? ' aria-hidden="true"' : ""}>${I18N[lang].software_brands.map(software=>softwareCard(software,decorative)).join("")}</div>`;
+}
+
+function render(lang){
+  const t = I18N[lang];
+  root.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = t[el.dataset.i18n]; });
+  $("#exp").innerHTML = t.exp.map(card).join("");
+  $("#proj").innerHTML = t.proj.map(card).join("");
+  $("#edu").innerHTML = t.edu.map(e=>`<article class="card"><div class="edu"><h3 style="margin:0">${e.role}</h3><span class="date">${e.date}</span></div><p class="sub" style="margin:6px 0 0">${e.sub}</p></article>`).join("");
+  $("#software-list").innerHTML = softwareGroup()+Array.from({length:4},()=>softwareGroup(true)).join("");
+  updateSoftwareMotionControl(t);
+  $("#skillgrid").innerHTML = t.skills_title.map(s=>`<div class="card skill"><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");
+  $("#langs").innerHTML = t.langs.map(l=>`<div class="card skill"><h3>${l[0]}</h3><p>${l[1]}</p></div>`).join("");
+  $("#hobby-audio-player").setAttribute("aria-label", t.hobby_audio_player);
+  hobbyAudioPlay.textContent = hobbyAudio.paused ? "▶" : "Ⅱ";
+  hobbyAudioPlay.setAttribute("aria-label", hobbyAudio.paused ? t.hobby_audio_play : t.hobby_audio_pause);
+  hobbyAudioSeek.setAttribute("aria-label", t.hobby_audio_seek);
+  hobbyAudioVolume.setAttribute("aria-label", t.hobby_audio_volume);
+  if (hobbyAudioStatus.textContent) hobbyAudioStatus.textContent = t.hobby_audio_error;
+  $("#lang").textContent = t.switch;
+  try{ localStorage.setItem("lang", lang); }catch(e){}
+}
+
+let softwareMotionPaused = false;
+function updateSoftwareMotionControl(t){
+  $("#software-list").classList.toggle("is-paused",softwareMotionPaused);
+  $("#software-motion-toggle").textContent = softwareMotionPaused ? t.software_motion_resume : t.software_motion_pause;
+  $("#software-motion-toggle").setAttribute("aria-pressed",String(softwareMotionPaused));
+}
+
+let lang = "fr";
+try{ lang = localStorage.getItem("lang") || "fr"; }catch(e){}
+render(lang);
+$("#lang").onclick = () => { lang = lang==="fr" ? "en" : "fr"; render(lang); };
+$("#software-motion-toggle").onclick = () => {
+  softwareMotionPaused = !softwareMotionPaused;
+  updateSoftwareMotionControl(I18N[lang]);
+};
+
+function formatAudioTime(seconds){
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const minutes = Math.floor(seconds / 60);
+  const remainder = Math.floor(seconds % 60);
+  return `${minutes}:${String(remainder).padStart(2,"0")}`;
+}
+function updateAudioTimeline(){
+  const duration = hobbyAudio.duration;
+  if (Number.isFinite(duration)){
+    hobbyAudioSeek.max = String(duration);
+    hobbyAudioSeek.disabled = false;
+    hobbyAudioDuration.textContent = formatAudioTime(duration);
+  }
+  hobbyAudioSeek.value = Number.isFinite(hobbyAudio.currentTime) ? String(hobbyAudio.currentTime) : "0";
+  hobbyAudioCurrent.textContent = formatAudioTime(hobbyAudio.currentTime);
+}
+function updateAudioPlayButton(){
+  const t = I18N[lang];
+  hobbyAudioPlay.textContent = hobbyAudio.paused ? "▶" : "Ⅱ";
+  hobbyAudioPlay.setAttribute("aria-label", hobbyAudio.paused ? t.hobby_audio_play : t.hobby_audio_pause);
+}
+hobbyAudioPlay.onclick = () => {
+  hobbyAudioStatus.textContent = "";
+  if (hobbyAudio.paused){
+    hobbyAudio.play().catch(() => { hobbyAudioStatus.textContent = I18N[lang].hobby_audio_error; });
+  }else{
+    hobbyAudio.pause();
+  }
+};
+hobbyAudio.addEventListener("loadedmetadata", updateAudioTimeline);
+hobbyAudio.addEventListener("durationchange", updateAudioTimeline);
+hobbyAudio.addEventListener("timeupdate", updateAudioTimeline);
+hobbyAudio.addEventListener("seeked", updateAudioTimeline);
+hobbyAudio.addEventListener("play", updateAudioPlayButton);
+hobbyAudio.addEventListener("pause", updateAudioPlayButton);
+hobbyAudio.addEventListener("ended", updateAudioPlayButton);
+hobbyAudio.addEventListener("playing", () => { hobbyAudioStatus.textContent = ""; });
+hobbyAudio.addEventListener("error", () => { hobbyAudioStatus.textContent = I18N[lang].hobby_audio_error; });
+hobbyAudioSeek.addEventListener("input", () => {
+  if (Number.isFinite(hobbyAudio.duration)) hobbyAudio.currentTime = Number(hobbyAudioSeek.value);
+});
+hobbyAudioVolume.addEventListener("input", () => {
+  hobbyAudio.volume = Number(hobbyAudioVolume.value);
+  hobbyAudioVolumeValue.textContent = `${Math.round(hobbyAudio.volume * 100)}%`;
+});
+updateAudioTimeline();
+hobbyAudio.volume = Number(hobbyAudioVolume.value);
+hobbyAudio.addEventListener("volumechange", () => {
+  hobbyAudioVolume.value = String(hobbyAudio.volume);
+  hobbyAudioVolumeValue.textContent = `${Math.round(hobbyAudio.volume * 100)}%`;
+});
+
+const hobbiesToggle = $("#hobbies-toggle");
+const hobbiesSection = $("#hobbies");
+hobbiesToggle.onclick = () => {
+  hobbiesSection.hidden = false;
+  hobbiesToggle.setAttribute("aria-expanded", "true");
+  hobbiesToggle.hidden = true;
+  $("#hobbies-title").focus();
+};
+
+const cvMenuToggle = $("#cv-menu-toggle");
+const cvMenu = $("#cv-menu");
+function closeCvMenu(){
+  cvMenu.hidden = true;
+  cvMenuToggle.setAttribute("aria-expanded", "false");
+}
+cvMenuToggle.onclick = () => {
+  const isExpanded = cvMenuToggle.getAttribute("aria-expanded") === "true";
+  cvMenu.hidden = isExpanded;
+  cvMenuToggle.setAttribute("aria-expanded", String(!isExpanded));
+};
+document.addEventListener("click", event => {
+  if (!event.target.closest(".cv-picker")) closeCvMenu();
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !cvMenu.hidden) {
+    closeCvMenu();
+    cvMenuToggle.focus();
+  }
+});
+cvMenu.addEventListener("click", event => {
+  if (event.target.closest("a")) closeCvMenu();
+});
+
+let theme = "light";
+try{ theme = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark":"light"); }catch(e){}
+root.dataset.theme = theme;
+$("#theme").onclick = () => {
+  theme = root.dataset.theme==="dark" ? "light":"dark";
+  root.dataset.theme = theme;
+  try{ localStorage.setItem("theme", theme); }catch(e){}
+};
+$("#yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
