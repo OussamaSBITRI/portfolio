@@ -60,6 +60,11 @@ h2{font-size:1.6rem;margin:0 0 24px;display:flex;align-items:center;gap:12px}
 h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .timeline{display:grid;gap:18px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.publication-card{position:relative;overflow:hidden;padding:0}
+.publication-content{position:relative;z-index:1;padding:22px;border-radius:13px;background:var(--surface);box-shadow:0 8px 16px rgba(20,30,50,.2);transition:transform .35s ease}
+.publication-download-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:inset 0 10px 18px rgba(10,20,35,.22),inset 0 -10px 18px rgba(10,20,35,.18),inset 8px 0 16px rgba(10,20,35,.12),inset -8px 0 16px rgba(10,20,35,.12)}
+.publication-download-panel .btn{position:absolute;top:50%;left:90%;width:max-content;padding:6px 10px;transform:translate(-50%,-50%);text-align:center;white-space:nowrap}
+.publication-card:hover .publication-content,.publication-card:focus-within .publication-content{transform:translateX(-20%)}
 .card header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
 .card h3{margin:0;font-size:1.05rem}
 .date{color:var(--muted);font-size:.88rem;white-space:nowrap}
@@ -113,7 +118,13 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
   .avatar{width:150px;height:150px;font-size:2.8rem;order:-1}
   .nav nav{display:none}
 }
+@media(hover:none){
+  .publication-download-panel{position:relative;min-height:76px;justify-content:center}
+  .publication-download-panel .btn{position:static;width:auto;padding:6px 10px;transform:none;white-space:nowrap}
+  .publication-card:hover .publication-content,.publication-card:focus-within .publication-content{transform:none}
+}
 @media(prefers-reduced-motion:reduce){
+  .publication-content{transition:none}
   .software-carousel{overflow-x:auto}
   .software-track{animation:none;transform:none}
   .software-group[aria-hidden="true"]{display:none}
@@ -131,6 +142,7 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
       <a href="#top" data-i18n="nav_about"></a>
       <a href="#experience" data-i18n="nav_exp"></a>
       <a href="#projects" data-i18n="nav_proj"></a>
+      <a href="#publications" data-i18n="nav_publications"></a>
       <a href="#skills" data-i18n="nav_skills"></a>
       <a href="#education" data-i18n="nav_edu"></a>
     </nav>
@@ -176,6 +188,21 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
   <section id="projects"><div class="wrap">
     <h2 data-i18n="nav_proj"></h2>
     <div class="timeline" id="proj"></div>
+  </div></section>
+
+  <section id="publications"><div class="wrap">
+    <h2 data-i18n="nav_publications"></h2>
+    <div class="timeline">
+      <article class="card publication-card">
+        <div class="publication-content">
+          <h3>Data-Driven Alloy Design for Petrochemical Applications Using Gaussian Process Models</h3>
+          <p class="sub">O. SBITRI, S. TOPUZ, K. DOURGAPARSAD, A. RAPETTI, B. GOMEZ FERRER</p>
+        </div>
+        <div class="publication-download-panel">
+          <a class="btn" href="P60.pdf" download data-i18n="publication_download"></a>
+        </div>
+      </article>
+    </div>
   </div></section>
 
   <section id="skills"><div class="wrap">
@@ -246,7 +273,7 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 <script>
 const I18N = {
 fr: {
-  nav_home:"Accueil", nav_about:"Profil", nav_exp:"Expérience", nav_proj:"Projets", nav_skills:"Compétences", nav_edu:"Formation", nav_contact:"Contact",
+  nav_home:"Accueil", nav_about:"Profil", nav_exp:"Expérience", nav_proj:"Projets", nav_publications:"Publications", nav_skills:"Compétences", nav_edu:"Formation", nav_contact:"Contact", publication_download:"Télécharger l'article",
   hobbies_button:"Cliquez ici pour en savoir un peu plus sur moi", hobbies_title:"Loisirs", hobbies_description:"Vous êtes arrivé jusqu'au bout ! Autant jeter un œil à quelques-uns de mes loisirs !",
   hobby_fps_title:"Jeux FPS", hobby_fps_description:"Joueur compétitif de FPS, actuellement classé Diamant sur Valorant et ayant atteint le rang Émeraude sur Rainbow Six Siege. Je joue aussi à d’autres jeux comme Apex Legends, Counter-Strike et ULTRAKILL.",
   hobby_sim_title:"Simulation automobile", hobby_sim_description:"Passionné de sport automobile, grand amateur du circuit de Spa-Francorchamps et de la voiture de Formule 1 F2004. Au fil des années, j’ai travaillé à mieux comprendre la dynamique des véhicules et à perfectionner mes gestes de pilotage pour tirer le meilleur parti du circuit.",
@@ -262,6 +289,7 @@ fr: {
     {brand:"ANSYS",software:["Workbench","Mechanical","Fluent"]},
     {brand:"Dassault Systèmes",software:["CATIA V5","SolidWorks","Abaqus"]},
     {brand:"MSC Software",software:["ANSA","Nastran","Meta"]},
+    {brand:"thermoCalc",software:[]},
     {brand:"AutoPIPE Vessel",software:["AutoPIPE Vessel"]},
     {brand:"Microsoft Office",software:["Excel","Word","PowerPoint"]}
   ],
@@ -315,7 +343,7 @@ fr: {
   switch:"EN"
 },
 en: {
-  nav_home:"Home", nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_edu:"Education", nav_contact:"Contact",
+  nav_home:"Home", nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_publications:"Publications", nav_skills:"Skills", nav_edu:"Education", nav_contact:"Contact", publication_download:"Download article",
   hobbies_button:"Click here for a little more about me", hobbies_title:"Hobbies", hobbies_description:"You've made it to the end! might as well look at some of my hobbies!",
   hobby_fps_title:"FPS Gaming", hobby_fps_description:"Competitive FPS gamer, currently Diamond in Valorant and with an Emerald peak in Rainbow Six Siege. I also play other games like Apex Legends, Counter-Strike, and ULTRAKILL.",
   hobby_sim_title:"Sim Racing", hobby_sim_description:"Motorsports enthusiast and a big fan of the Spa-Francorchamps circuit and the F2004 Formula 1 car. I've worked throughout the years to better understand vehicle dynamics and practice my driving inputs to get the most out of the track.",
@@ -331,6 +359,7 @@ en: {
     {brand:"ANSYS",software:["Workbench","Mechanical","Fluent"]},
     {brand:"Dassault Systèmes",software:["CATIA V5","SolidWorks","Abaqus"]},
     {brand:"MSC Software",software:["ANSA","Nastran","Meta"]},
+    {brand:"thermoCalc",software:[]},
     {brand:"AutoPIPE Vessel",software:["AutoPIPE Vessel"]},
     {brand:"Microsoft Office",software:["Excel","Word","PowerPoint"]}
   ],
@@ -407,6 +436,10 @@ const SOFTWARE_LOGOS = {
     src:"Logos/MSC_Software.jpg",
     alt:"MSC Software"
   },
+  thermoCalc: {
+    src:"Logos/thermocalc.png",
+    alt:"Thermo-Calc"
+  },
   "AutoPIPE Vessel": {
     src:"Logos/autopipe%20vessel.png",
     alt:"AutoPIPE Vessel"
@@ -431,7 +464,7 @@ function softwareCard({brand,software}, decorative=false){
       ? `<a href="${logo.src}" target="_blank" rel="noopener noreferrer"${decorative ? ' tabindex="-1"' : ""}><img src="${logo.src}" alt="${logo.alt} logo"></a>`
       : I18N[lang].software_logo_placeholder}</div>
     <h3>${brand}</h3>
-    <ul>${software.map(s=>`<li>${s}</li>`).join("")}</ul>
+    ${software.length ? `<ul>${software.map(s=>`<li>${s}</li>`).join("")}</ul>` : ""}
   </article>`;
 }
 
