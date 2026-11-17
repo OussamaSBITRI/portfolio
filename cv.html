@@ -33,10 +33,11 @@ header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--b
 .tools{display:flex;gap:8px}
 .section-progress{position:fixed;top:50%;left:12px;z-index:15;width:12px;height:min(360px,calc(100vh - 120px));transform:translateY(-50%)}
 .section-progress-toggle{position:absolute;top:0;bottom:0;left:-8px;z-index:1;width:28px;padding:0;border:0;border-radius:999px;background:transparent;cursor:pointer}
-.section-progress-track{position:absolute;inset:0 12px;overflow:hidden;border-radius:999px;background:var(--line);box-shadow:inset 0 0 3px rgba(20,30,50,.22)}
+.section-progress-toggle-icon{display:none}
+.section-progress-track{position:absolute;inset:0 4px;z-index:0;overflow:hidden;border-radius:999px;background:var(--line);box-shadow:inset 0 0 3px rgba(20,30,50,.22)}
 .section-progress-fill{display:block;width:100%;height:var(--scroll-progress,0%);border-radius:inherit;background:var(--accent-2);transition:height .12s linear}
 .section-progress-links{position:absolute;top:0;bottom:0;left:100%;z-index:2;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;min-width:max-content;max-height:calc(100vh - 32px);overflow-y:auto;padding:0 0 0 12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,visibility .15s ease}
-.section-progress:hover .section-progress-links,.section-progress.is-open .section-progress-links{opacity:1;visibility:visible;pointer-events:auto}
+.section-progress.is-open .section-progress-links{opacity:1;visibility:visible;pointer-events:auto}
 .section-progress-link{display:block;padding:2px 0;color:var(--muted);font-size:.84rem;line-height:1.35;text-align:left;white-space:nowrap}
 .section-progress-link:hover,.section-progress-link[aria-current="location"]{color:var(--accent);text-decoration:none}
 .section-progress-toggle:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
@@ -122,8 +123,12 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 @media(max-width:760px){
   .hero .wrap{grid-template-columns:1fr}
   .avatar{width:150px;height:150px;font-size:2.8rem;order:-1}
-  .section-progress{left:6px;height:min(300px,calc(100vh - 100px))}
-  .section-progress-links{max-width:calc(100vw - 48px)}
+  .section-progress{top:50%;right:0;left:auto;width:min(156px,calc(100vw - 32px));height:min(360px,calc(100vh - 40px));transform:translate(100%,-50%);border:1px solid var(--line);border-right:0;border-radius:16px 0 0 16px;background:var(--surface);box-shadow:var(--shadow);transition:transform .28s ease}
+  .section-progress.is-open{transform:translate(0,-50%)}
+  .section-progress-toggle{top:50%;bottom:auto;left:-28px;display:grid;width:56px;height:56px;transform:translateY(-50%);place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--surface);box-shadow:var(--shadow)}
+  .section-progress-toggle-icon{display:block;width:10px;height:10px;transform:translateX(-14px);border-radius:50%;background:var(--accent-2)}
+  .section-progress-track{top:16px;right:16px;bottom:16px;left:auto;width:4px}
+  .section-progress-links{top:16px;right:40px;bottom:16px;left:16px;align-items:flex-end;max-width:calc(100vw - 96px);max-height:calc(100vh - 72px);padding:0;text-align:right}
 }
 @media(hover:none){
   .publication-download-panel{position:relative;min-height:76px;justify-content:center}
@@ -132,13 +137,13 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 }
 @media(prefers-reduced-motion:reduce){
   .publication-content{transition:none}
-  .section-progress-fill,.section-progress-links{transition:none}
+  .section-progress,.section-progress-fill,.section-progress-links{transition:none}
   .software-carousel{overflow-x:auto}
   .software-track{animation:none;transform:none}
   .software-group[aria-hidden="true"]{display:none}
   .software-controls{display:none}
 }
-@media(hover:hover){.section-progress:focus-within .section-progress-links{opacity:1;visibility:visible;pointer-events:auto}}
+@media(hover:hover) and (min-width:761px){.section-progress:hover .section-progress-links,.section-progress:focus-within .section-progress-links{opacity:1;visibility:visible;pointer-events:auto}}
 @media print{.nav,.section-progress,.cta,footer{display:none}}
 </style>
 </head>
@@ -154,8 +159,9 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 </header>
 <nav class="section-progress" aria-label="CV sections">
   <button class="section-progress-toggle" type="button" aria-expanded="false" aria-controls="section-progress-links">
-    <span class="section-progress-track" aria-hidden="true"><span class="section-progress-fill"></span></span>
+    <span class="section-progress-toggle-icon" aria-hidden="true"></span>
   </button>
+  <span class="section-progress-track" aria-hidden="true"><span class="section-progress-fill"></span></span>
   <div class="section-progress-links" id="section-progress-links">
     <a class="section-progress-link" href="#top" data-progress-label="nav_about" data-i18n="nav_about"></a>
     <a class="section-progress-link" href="#experience" data-progress-label="nav_exp" data-i18n="nav_exp"></a>
@@ -525,8 +531,8 @@ const sectionProgressToggle = $(".section-progress-toggle");
 const sectionProgressLinks = Array.from(sectionProgressNav.querySelectorAll(".section-progress-link"));
 const sectionProgressSections = sectionProgressLinks.map(link=>$(link.getAttribute("href")));
 function updateSectionProgressDisclosure(){
-  const canHover = matchMedia("(hover: hover)").matches;
-  const isExpanded = sectionProgressNav.classList.contains("is-open") || sectionProgressNav.matches(":hover") || (canHover && sectionProgressNav.matches(":focus-within"));
+  const canHover = matchMedia("(hover: hover) and (min-width: 761px)").matches;
+  const isExpanded = sectionProgressNav.classList.contains("is-open") || (canHover && (sectionProgressNav.matches(":hover") || sectionProgressNav.matches(":focus-within")));
   sectionProgressToggle.setAttribute("aria-expanded",String(isExpanded));
 }
 function updateSectionProgress(){
