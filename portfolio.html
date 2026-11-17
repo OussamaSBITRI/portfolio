@@ -30,10 +30,16 @@ header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--b
 .brand{display:inline-flex;align-items:center;padding:6px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-weight:700;color:var(--text);transition:border-color .2s ease,box-shadow .2s ease}
 .brand:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:0 0 10px color-mix(in srgb,var(--accent-2) 18%,transparent);text-decoration:none}
 .brand:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
-.nav nav{display:flex;gap:18px;font-size:.92rem;flex-wrap:wrap}
-.nav nav a{color:var(--muted)}
-.nav nav a:hover{color:var(--accent);text-decoration:none}
 .tools{display:flex;gap:8px}
+.section-progress{position:fixed;top:50%;left:12px;z-index:15;width:12px;height:min(260px,calc(100vh - 120px));transform:translateY(-50%)}
+.section-progress-toggle{position:absolute;top:0;bottom:0;left:-8px;z-index:1;width:28px;padding:0;border:0;border-radius:999px;background:transparent;cursor:pointer}
+.section-progress-track{position:absolute;inset:0 12px;overflow:hidden;border-radius:999px;background:var(--line);box-shadow:inset 0 0 3px rgba(20,30,50,.22)}
+.section-progress-fill{display:block;width:100%;height:var(--scroll-progress,0%);border-radius:inherit;background:var(--accent-2);transition:height .12s linear}
+.section-progress-links{position:absolute;top:0;bottom:0;left:100%;z-index:2;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;min-width:max-content;max-height:calc(100vh - 32px);overflow-y:auto;padding:0 0 0 12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,visibility .15s ease}
+.section-progress:hover .section-progress-links,.section-progress.is-open .section-progress-links{opacity:1;visibility:visible;pointer-events:auto}
+.section-progress-link{display:block;padding:2px 0;color:var(--muted);font-size:.84rem;line-height:1.35;text-align:left;white-space:nowrap}
+.section-progress-link:hover,.section-progress-link[aria-current="location"]{color:var(--accent);text-decoration:none}
+.section-progress-toggle:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
 .btn{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:8px;padding:6px 10px;font-size:.85rem;cursor:pointer;transition:all .2s ease}
 .btn:hover{border-color:var(--accent);transform:translateY(-1px)}
 .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -89,29 +95,36 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 @media(max-width:760px){
   .hero .wrap{grid-template-columns:1fr}
   .avatar{width:150px;height:150px;font-size:2.8rem;order:-1}
-  .nav nav{display:none}
+  .section-progress{left:6px;height:min(220px,calc(100vh - 100px))}
+  .section-progress-links{max-width:calc(100vw - 48px)}
   .portfolio-columns{grid-template-columns:1fr}
   .portfolio-column+.portfolio-column{border-top:1px solid var(--line);border-left:0}
 }
-@media print{.nav,.cta,footer{display:none}}
+@media(prefers-reduced-motion:reduce){.section-progress-fill,.section-progress-links{transition:none}}
+@media(hover:hover){.section-progress:focus-within .section-progress-links{opacity:1;visibility:visible;pointer-events:auto}}
+@media print{.nav,.section-progress,.cta,footer{display:none}}
 </style>
 </head>
 <body>
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="cv.html">Portfolio</a>
-    <nav>
-      <a href="index.html" data-i18n="nav_home"></a>
-      <a href="#top" data-i18n="nav_about"></a>
-      <a href="#experience" data-i18n="nav_exp"></a>
-      <a href="#projects" data-i18n="nav_proj"></a>
-    </nav>
     <div class="tools">
       <button class="btn" id="lang" aria-label="Language">EN</button>
       <button class="btn" id="theme" aria-label="Theme">◐</button>
     </div>
   </div>
 </header>
+<nav class="section-progress" aria-label="Portfolio sections">
+  <button class="section-progress-toggle" type="button" aria-expanded="false" aria-controls="section-progress-links">
+    <span class="section-progress-track" aria-hidden="true"><span class="section-progress-fill"></span></span>
+  </button>
+  <div class="section-progress-links" id="section-progress-links">
+    <a class="section-progress-link" href="#top" data-progress-label="nav_about" data-i18n="nav_about"></a>
+    <a class="section-progress-link" href="#experience" data-progress-label="nav_exp" data-i18n="nav_exp"></a>
+    <a class="section-progress-link" href="#projects" data-progress-label="nav_proj" data-i18n="nav_proj"></a>
+  </div>
+</nav>
 
 <main id="top">
   <div class="hero">
@@ -165,7 +178,7 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 <script>
 const I18N = {
 fr: {
-  nav_home:"Accueil", nav_about:"Profil", nav_exp:"Expérience", nav_proj:"Projets", nav_contact:"Contact",
+  nav_about:"Profil", nav_exp:"Expérience", nav_proj:"Projets", nav_contact:"Contact", nav_progress:"Sections du portfolio", nav_progress_toggle:"Afficher les raccourcis des sections",
   what_title:"Quoi ?", how_title:"Comment ?", results_title:"Résultats",
   contact_title:"Me contacter", phone_france:"France", phone_morocco:"Maroc",
   eyebrow:"Ingénieur Mécanique · Master Mécanique des Matériaux",
@@ -219,7 +232,7 @@ fr: {
   switch:"EN"
 },
 en: {
-  nav_home:"Home", nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_contact:"Contact",
+  nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_contact:"Contact", nav_progress:"Portfolio sections", nav_progress_toggle:"Show section shortcuts",
   what_title:"What?", how_title:"How?", results_title:"Results",
   contact_title:"Contact Me", phone_france:"France", phone_morocco:"Morocco",
   eyebrow:"Mechanical Engineer · MSc Materials Mechanics",
@@ -292,6 +305,9 @@ function card(x){
 function render(lang){
   const t = I18N[lang];
   root.lang = lang;
+  $(".section-progress").setAttribute("aria-label",t.nav_progress);
+  $(".section-progress-toggle").setAttribute("aria-label",t.nav_progress_toggle);
+  document.querySelectorAll(".section-progress-link").forEach(link=>link.setAttribute("aria-label",t[link.dataset.progressLabel]));
   document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = t[el.dataset.i18n]; });
   $("#image-lightbox").setAttribute("aria-label", t.image_preview);
   $(".lightbox-close").setAttribute("aria-label", t.close_preview);
@@ -305,6 +321,63 @@ let lang = "fr";
 try{ lang = localStorage.getItem("lang") || "fr"; }catch(e){}
 render(lang);
 $("#lang").onclick = () => { lang = lang==="fr" ? "en" : "fr"; render(lang); };
+const sectionProgressNav = $(".section-progress");
+const sectionProgressToggle = $(".section-progress-toggle");
+const sectionProgressLinks = Array.from(sectionProgressNav.querySelectorAll(".section-progress-link"));
+const sectionProgressSections = sectionProgressLinks.map(link=>$(link.getAttribute("href")));
+function updateSectionProgressDisclosure(){
+  const canHover = matchMedia("(hover: hover)").matches;
+  const isExpanded = sectionProgressNav.classList.contains("is-open") || sectionProgressNav.matches(":hover") || (canHover && sectionProgressNav.matches(":focus-within"));
+  sectionProgressToggle.setAttribute("aria-expanded",String(isExpanded));
+}
+function updateSectionProgress(){
+  const maxScroll = Math.max(0,root.scrollHeight - window.innerHeight);
+  const scrollPosition = Math.min(maxScroll,Math.max(0,window.scrollY));
+  const sectionPositions = sectionProgressSections.map(section=>
+    Math.min(maxScroll,Math.max(0,section.getBoundingClientRect().top + window.scrollY))
+  );
+  let progress = 0;
+  if (maxScroll > 0 && sectionPositions.length > 1){
+    let interval = 0;
+    while (interval < sectionPositions.length - 2 && scrollPosition >= sectionPositions[interval + 1]) interval++;
+    const intervalStart = sectionPositions[interval];
+    const intervalEnd = sectionPositions[interval + 1];
+    const intervalProgress = intervalEnd > intervalStart ? (scrollPosition - intervalStart) / (intervalEnd - intervalStart) : 1;
+    progress = (interval + Math.min(1,Math.max(0,intervalProgress))) / (sectionPositions.length - 1);
+  }
+  sectionProgressNav.style.setProperty("--scroll-progress",`${progress * 100}%`);
+
+  const activationLine = window.innerHeight * .2;
+  let activeLink = sectionProgressLinks[0];
+  for (let i=1;i<sectionProgressSections.length;i++){
+    if (sectionProgressSections[i].getBoundingClientRect().top <= activationLine) activeLink = sectionProgressLinks[i];
+  }
+  sectionProgressLinks.forEach(link=>{
+    if (link===activeLink) link.setAttribute("aria-current","location");
+    else link.removeAttribute("aria-current");
+  });
+}
+sectionProgressToggle.onclick = () => {
+  sectionProgressNav.classList.toggle("is-open");
+  updateSectionProgressDisclosure();
+};
+sectionProgressNav.addEventListener("mouseenter",updateSectionProgressDisclosure);
+sectionProgressNav.addEventListener("mouseleave",updateSectionProgressDisclosure);
+sectionProgressNav.addEventListener("focusin",updateSectionProgressDisclosure);
+sectionProgressNav.addEventListener("focusout",()=>setTimeout(updateSectionProgressDisclosure,0));
+sectionProgressNav.addEventListener("click",event=>{
+  if (event.target.closest(".section-progress-link")) sectionProgressNav.classList.remove("is-open");
+  updateSectionProgressDisclosure();
+});
+document.addEventListener("click",event=>{
+  if (!sectionProgressNav.contains(event.target)){
+    sectionProgressNav.classList.remove("is-open");
+    updateSectionProgressDisclosure();
+  }
+});
+window.addEventListener("scroll",updateSectionProgress,{passive:true});
+window.addEventListener("resize",updateSectionProgress);
+updateSectionProgress();
 
 document.addEventListener("click", event => {
   const button = event.target.closest(".gallery-image-button");
@@ -345,13 +418,30 @@ cvMenu.addEventListener("click", event => {
   if (event.target.closest("a")) closeCvMenu();
 });
 
-let theme = "light";
-try{ theme = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark":"light"); }catch(e){}
+const requestedTheme = new URLSearchParams(location.search).get("theme");
+const hasRequestedTheme = requestedTheme === "light" || requestedTheme === "dark";
+let theme = hasRequestedTheme ? requestedTheme : "light";
+if (hasRequestedTheme){
+  try{ localStorage.setItem("theme", theme); }catch(e){}
+}else{
+  try{ theme = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark":"light"); }catch(e){}
+}
 root.dataset.theme = theme;
+$(".brand").addEventListener("click",event=>{
+  if (location.protocol !== "file:") return;
+  const destination = new URL(event.currentTarget.href);
+  destination.searchParams.set("theme",root.dataset.theme);
+  event.currentTarget.href = destination.href;
+});
 $("#theme").onclick = () => {
   theme = root.dataset.theme==="dark" ? "light":"dark";
   root.dataset.theme = theme;
   try{ localStorage.setItem("theme", theme); }catch(e){}
+  if (location.protocol === "file:"){
+    const url = new URL(location.href);
+    url.searchParams.set("theme",theme);
+    history.replaceState(null,"",url);
+  }
 };
 $("#yr").textContent = new Date().getFullYear();
 </script>
