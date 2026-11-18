@@ -74,7 +74,7 @@ header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--b
 .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 :root[data-theme="dark"] .btn.primary{color:#080a0d}
 .hero{padding:72px 0 48px}
-.hero .wrap{display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center}
 .hero.cv-menu-open .wrap{position:relative;z-index:9}
 .eyebrow{color:var(--accent-2);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
 h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin:.3em 0}
@@ -234,7 +234,7 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
           </div>
         </div>
       </div>
-      <div class="avatar"><img src="photo-cv.jpg" alt="Oussama SBITRI" onerror="this.remove();this.parentNode.textContent='OS'"></div>
+      <div class="avatar" id="hero-avatar"><img src="photo-cv.jpg" alt="Oussama SBITRI" onerror="this.remove();this.parentNode.textContent='OS'"></div>
     </div>
   </div>
 
@@ -348,19 +348,19 @@ fr: {
   ],
   eyebrow:"Ingénieur Mécanique · Master Mécanique des Matériaux",
   cta_cv:"Télécharger mon CV", cta_cv_france:"CV France", cta_cv_maroc:"CV Maroc",
-  about:"Ingénieur mécanique spécialisé en simulation par éléments finis (ANSYS, Nastran, Abaqus), avec une expérience combinée en automobile, énergie/nucléaire et équipements sous pression. Diplômé de l'ENSAM (Génie mécanique) et titulé d'un Master en Mécanique des Matériaux à l'École Centrale de Lille.",
+  about:"Diplômé de l'ENSAM en Génie mécanique et titulaire d'un Master en Mécanique des Matériaux à l'École Centrale de Lille. À la recherche d'une opportunité dans la mécanique, les matériaux et la gestion de projets. Motivé, adaptable et doté d'une solide capacité d'analyse, je souhaite mettre mes compétences techniques au service de projets innovants.",
   exp:[
-    {role:"PARALLOY Group — Stage de fin d'études, Ingénieur Métallurgie", date:"oct. 2025 – avr. 2026", sub:"Développement d’alliages réfractaires piloté par les données : structuration, simulation et optimisation", tags:["Machine Learning","Algorithmes génétiques","Alliages nucléaires","Python"], items:[
-      "Optimisation intelligente d'alliages via Machine Learning (précision du modèle : <b>87%</b>) et algorithmes génétiques pour des alliages nucléaires.",
-      "Réduction du coût de la matière première des nouvelles chimies de <b>30%</b> (vs. alliage commercial) pour la même durée de vie en fluage.",
+    {role:"PARALLOY Group — Stage de Fin d’Études, Ingénieur Métallurgie", date:"oct. 2025 – avr. 2026", sub:"", tags:["Machine Learning","Algorithmes génétiques","Alliages nucléaires","Python"], items:[
+      "Optimisation intelligente d’alliages via couplage Machine Learning (Précision du modèle : <b>87%</b>) et algorithmes génétiques.",
+      "Réduction du coût de la matière première des nouvelles chimies de <b>30%</b> (vs. alliage commercial) pour la même ddv en fluage.",
       "Animation des réunions hebdomadaires avec les équipes métallurgie et laboratoire pour la résolution des points bloquants.",
-      "Organisation de sessions 5S hebdomadaires pour optimiser le flux de travail de l'équipe R&D.",
+      "Organisation des sessions 5S hebdomadaires pour optimiser le flux de travail au sein de l’équipe R&D.",
       "Suivi des opérations de coulée des alliages optimisés et validation métallurgique des échantillons."]},
     {role:"Bertrandt — Stage de fin d'études, Ingénieur Calcul Mécanique", date:"fév. 2024 – août 2024", sub:"Choix de matériau pour minimiser le poids du châssis en améliorant les performances vibratoires", tags:["CATIA V5","ANSA","HyperMesh","GRANTA Edupack","Composites"], items:[
-      "Pilotage technique du projet de bout en bout : objectifs, coordination CAO / simulation / post-traitement, présentation aux ingénieurs référents.",
-      "Modélisation du chassis sous ANSA, définition des conditions limites, connexions et les types du calcul .",
-      "Amélioration de la raideur dynamique de <b>108%</b> (vs. matériau de référence) et allègement structural de <b>20,03%</b> via sélection de matériaux composites.",
-      "Animation de réunions quotidiennes avec les équipes de conception pour le suivi des jalons."]},
+      "Pilotage technique du projet de bout en bout : définition des objectifs, coordination des étapes CAO/simulation/post-traitement, présentation aux ingénieurs référents.",
+      "Modélisation du chassis sous ANSA, Maillage, définition des conditions limites, connexions et configuration du calcul.",
+      "Amélioration de la raideur dynamique de <b>108%</b> (vs. Matériau de référence) et allègement structural de <b>20,03%</b> via sélection de matériaux composites.",
+      "Animation des réunions quotidiennes avec les équipes de conception pour le suivi des jalons et la résolution des problèmes."]},
     {role:"OCP Group — Stage, Ingénieur Mécanique", date:"juin 2023 – août 2023", sub:"Analyse de rupture d'un piquage d'une soupape à économiseur.", tags:["SolidWorks","ANSYS","Thermomécanique","Analyse de rupture"], items:[
       "Pilotage de la démarche d'amélioration : analyse des causes racines, arbitrage technique, coordination avec les équipes de maintenance.",
       "Conception et validation de la nouvelle solution (<b>SolidWorks</b> + modélisation thermomécanique couplée <b>ANSYS</b>).",
@@ -416,7 +416,7 @@ en: {
   ],
   eyebrow:"Mechanical Engineer · MSc Materials Mechanics",
   cta_cv:"Download my CV", cta_cv_france:"France CV", cta_cv_maroc:"Morocco CV",
-  about:"Mechanical engineer specialised in finite element simulation (ANSYS, Nastran, Abaqus), with combined experience in automotive, energy/nuclear and pressure equipment. Graduate of ENSAM (Mechanical Engineering) with a MSc in Materials Mechanics at École Centrale de Lille.",
+  about:"Graduate of ENSAM in Mechanical Engineering and holder of an MSc in Materials Mechanics from École Centrale de Lille. Seeking an opportunity in mechanical engineering, materials and project management.",
   exp:[
     {role:"PARALLOY Group — Final-year Internship, Metallurgy Engineer", date:"Oct 2025 – Apr 2026", sub:"Data-Driven Development of Refractory Alloys: Structuring, Simulation, and Optimisation", tags:["Machine Learning","Genetic algorithms","Nuclear alloys","Python"], items:[
       "Intelligent alloy optimisation using Machine Learning (model accuracy: <b>87%</b>) and genetic algorithms for nuclear alloys.",
@@ -554,7 +554,32 @@ if (requestedLanguage!=="fr"&&requestedLanguage!=="en"){
   try{ lang = localStorage.getItem("lang") || "fr"; }catch(e){}
 }
 render(lang);
-$("#lang").onclick = () => { lang = lang==="fr" ? "en" : "fr"; render(lang); };
+$("#lang").onclick = () => { lang = lang==="fr" ? "en" : "fr"; render(lang); requestAnimationFrame(updateHeroAvatar); };
+const heroName = $(".hero h1");
+const heroAbout = $("#about");
+const heroAvatar = $("#hero-avatar");
+function updateHeroAvatar(){
+  if (matchMedia("(max-width:760px)").matches){
+    heroAvatar.style.width="";
+    heroAvatar.style.height="";
+    heroAvatar.style.marginTop="";
+    return;
+  }
+  const wrapRect = heroName.closest(".wrap").getBoundingClientRect();
+  const nameRect = heroName.getBoundingClientRect();
+  const aboutRect = heroAbout.getBoundingClientRect();
+  const rangeTop = nameRect.top - wrapRect.top;
+  const rangeBottom = aboutRect.bottom - wrapRect.top;
+  const rangeHeight = Math.max(0,rangeBottom-rangeTop);
+  const size = Math.max(0,Math.min(220,rangeHeight));
+  const marginTop = rangeTop + (rangeHeight-size)/2;
+  heroAvatar.style.width = `${size}px`;
+  heroAvatar.style.height = `${size}px`;
+  heroAvatar.style.marginTop = `${Math.max(0,marginTop)}px`;
+}
+window.addEventListener("resize",updateHeroAvatar);
+window.addEventListener("load",updateHeroAvatar);
+requestAnimationFrame(updateHeroAvatar);
 const sectionProgressNav = $(".section-progress");
 const sectionProgressToggle = $(".section-progress-toggle");
 const sectionProgressLinks = Array.from(sectionProgressNav.querySelectorAll(".section-progress-link"));
